@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  web:
+    container_name: web
+    build:
+      context: .
+    volumes:
+      - ./src/:/var/www
+      - ./ngx/conf.d/:/etc/nginx/conf.d
+      - ./ngx/modules-available/:/etc/nginx/modules-available
+      - ./ngx/modules-enabled/:/etc/nginx/modules-enabled
+      - ./ngx/sites-available/:/etc/nginx/sites-available
+      - ./ngx/sites-enabled/:/etc/nginx/sites-enabled
+      - ./php/:/etc/php
+    ports:
+      - "8080:80"
+      - "443:443"
